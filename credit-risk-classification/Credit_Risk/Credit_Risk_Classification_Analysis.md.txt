@@ -1,0 +1,49 @@
+﻿Credit Risk Classification Analysis Report
+
+Overview:
+
+The purpose of this analysis is to use machine learning to determine creditworthiness of borrowers. The dataset provided lending activity to develop a model for creditworthiness for this company to make an informed decision for lending.   
+ 
+Factors in determining lending from CSV:
+
+• Size of the loan
+• Interest rate on the loan
+• Borrower’s income
+• Debt to income ratio
+• Borrower’s number of accounts 
+• Derogatory marks on borrower’s credit
+• Total debt
+
+Analysis:
+
+The lending data CSV dataset was large in having 77,526 data points.  The CSV dataset was first reviewed in a DataFrame.  The data was split into testing and training sets and the “loan status” column was first dropped. The dataset was split by using sklearn.model_selection import train_test_split.  The training set was utilized to build a logistic regression model by using sklearn.linear_model import LogisticRegression.  The reason for making this training model was to find out whether a loan will be of low or high risk to the borrower. Next the testing data samples drew 19,384 test samples that fit the model with X-test.  A confusion_matrix was made of the of the test samples producing the following matrix:
+
+[[18679    80]
+ [   67   558]]
+
+The numbers in the confusion matrix breakdown are as follows 18679 (True Positive), 80 (False Negative “Type II error”), 67 (False Positive “Type I error”) and 558 (True Negative).  There is a possibility the model will have False Negatives and False Positives from this matrix.
+Lastly a classification report was made, and more details are shown below in the results section.
+
+Results:
+
+Logistic Regression Model results:
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00     18759
+           1       0.87      0.89      0.88       625
+
+    accuracy                           0.99     19384
+   macro avg       0.94      0.94      0.94     19384
+weighted avg       0.99      0.99      0.99     19384
+
+• The model in predicting low-risk loans was 100% precise.
+• The model was only 87% precise in predicting high-risk loans.
+• The total average precision was 93% (by averaging 100% and 87%)
+• For recall the model had 100% in predicting low-risk loans.
+• The recall model was 89% in predicting high-risk loans.
+• The total average recall precision was 95% (by averaging 100% and 89%).
+• The total accuracy was 94% (0.94)
+
+Summary:
+
+The logistic regression model is best for predicting healthy loans (0) with good precision and recall.  The model may make false positive predictions on predicting high-risk loans (1).  The model suggests using this model for predicting healthy loans (1) 100% precise and 100% recall and be cautious when it’s used as a model for predicting high-risk loans (0) 87% precise and 89% recall.  The prediction may yield a false negative or false positive when used as model for predicting high-risk loans.
